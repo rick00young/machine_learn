@@ -70,7 +70,7 @@ for user_index, user_name in enumerate(os.listdir(faces_folder_path)):
             current_face = [x for x in face_descriptor]
             current_face.append(user_index)
             face_feature.append(current_face)
-            dlib.hit_enter_to_continue()
+            # dlib.hit_enter_to_continue()
 
 print(face_feature)
 print(face_user)
