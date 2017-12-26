@@ -17,7 +17,7 @@ faces_folder_path = sys.argv[3]
 
 
 detector = dlib.get_frontal_face_detector()
-sp = dlib.shape_predictor(predictor_path)
+shape_predictor = dlib.shape_predictor(predictor_path)
 facerec = dlib.face_recognition_model_v1(face_rec_model_path)
 
 
@@ -54,7 +54,7 @@ def parse_face_feature(img_path, face_limit=0):
 		print("Detection {}: Left: {} Top: {} Right: {} Bottom: {}".format(
 			k, d.left(), d.top(), d.right(), d.bottom()))
 		# Get the landmarks/parts for the face in box d.
-		shape = sp(img, d)
+		shape = shape_predictor(img, d)
 		# Draw the face landmarks on the screen so we can see what face is currently being processed.
 		# win.clear_overlay()
 		# win.add_overlay(d)

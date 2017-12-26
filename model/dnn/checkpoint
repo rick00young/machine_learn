@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/rick/work_space/www/ai/face_recognition/model/dnn/face_model.rflearn"
+all_model_checkpoint_paths: "/Users/rick/work_space/www/ai/face_recognition/model/dnn/face_model.rflearn"
