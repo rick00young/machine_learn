@@ -40,4 +40,4 @@
 ```
 
 #### 结果展示:
-![实时人脸识别结果](https://github.com/rick00young/face_recognition/blob/master/demo.jpg "实时人脸识别结果")
+![实时人脸识别结果](https://github.com/rick00young/machine_learn/blob/master/face_recognition/demo.jpg "实时人脸识别结果")
