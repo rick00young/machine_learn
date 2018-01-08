@@ -42,9 +42,12 @@ def setOfWord2Vec(vocabList, inputSet):
 def trainNB0(trainMatrix, trainCategory):
 	numTrainDocs = len(trainMatrix)
 	numWords = len(trainMatrix[0])
+	# p(x)的先验概率
 	pAbusive = sum(trainCategory)/float(numTrainDocs)
+	# 初始化计数器
 	p0Num = np.ones(numWords)
 	p1Num = np.ones(numWords)
+	# 防止概率太小发生下溢
 	p0Denom = 2.0
 	p1Denom = 2.0
 	for i in range(numTrainDocs):
@@ -54,12 +57,17 @@ def trainNB0(trainMatrix, trainCategory):
 		else:
 			p0Num += trainMatrix[i]
 			p0Denom += sum(trainMatrix[i])
+	# 条件概率
+	# log 是为防止
 	p1vect = np.log(p1Num/p1Denom)
 	p0vect = np.log(p0Num/p0Denom)
 	return p0vect, p1vect, pAbusive
 
 
 def classifyNB(vec2classify, p0vec, p1vec, pclass1):
+	# p(a|b) = a(b|a)p(a)/p(b)
+	# 进行概率大小比较时由于分母都一样,所以可以不计算分母,只计算分子
+	# 此处相加是上式两取对数: ln(a*b) = ln(a) + ln(b)
 	p1 = sum(vec2classify * p1vec) + np.log(pclass1)
 	p0 = sum(vec2classify * p0vec) + np.log(1.0 - pclass1)
 

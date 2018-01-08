@@ -82,6 +82,10 @@ def svdEst(dataMat, user, simMean, item):
 	ratSimTotal = 0.0
 	u, sigma, vt = linalg.svd(dataMat)
 	sig4 = np.mat(np.eye(4)*sigma[:4])
+	# dataMat: (7, 5)
+	# u: (7, 7) -> (7, 4)
+	# sigma: (5,5)  -> (4,4)
+	# vt: (5,5)
 	xformedItems = dataMat.T * u[:, :4] * sig4.I
 	for j in range(n):
 		userRating = dataMat[user, j]
