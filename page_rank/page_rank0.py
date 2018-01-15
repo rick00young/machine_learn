@@ -24,26 +24,27 @@ vn=βMv[n−1]+(1−β)e/N
 '''
 
 import numpy as np
+
 M = [
-	[0, 	1/2, 	0, 	0],
-	[1/3, 	0, 		0, 	1/2],
-	[1/3, 	0, 		1, 	1/2],
-	[1/3, 	1/2, 	0, 	0]
+	[0, 1 / 2, 0, 0],
+	[1 / 3, 0, 0, 1 / 2],
+	[1 / 3, 0, 1, 1 / 2],
+	[1 / 3, 1 / 2, 0, 0]
 ]
 
-v0 = [[1/4],
-	  [1/4],
-	  [1/4],
-	  [1/4]]
+v0 = [[1 / 4],
+	  [1 / 4],
+	  [1 / 4],
+	  [1 / 4]]
 
 m_matrix = np.mat(M)
 v_matrix = np.mat(v0)
 beta = 0.8
 
 for i in range(5):
-	vn = beta*m_matrix.dot(v0) + (1-beta)*np.mat(v_matrix)
+	vn = beta * m_matrix.dot(v0) + (1 - beta) * np.mat(v_matrix)
 
 	print(vn)
-print('--'*20)
+print('--' * 20)
 print(vn)
 # print(vn*148)
