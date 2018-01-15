@@ -41,10 +41,12 @@ m_matrix = np.mat(M)
 v_matrix = np.mat(v0)
 beta = 0.8
 
-for i in range(5):
-	vn = beta * m_matrix.dot(v0) + (1 - beta) * np.mat(v_matrix)
-
+vn = np.mat(v0)
+for i in range(60):
+	vn = beta * m_matrix.dot(vn) + (1 - beta) * np.mat(v_matrix)
+	print("iteration: ", i)
+	print("page rank is:")
 	print(vn)
-print('--' * 20)
-print(vn)
+# print('--' * 20)
+# print(vn)
 # print(vn*148)
