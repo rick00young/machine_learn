@@ -2,7 +2,7 @@ import numpy as np
 
 
 def loadDataSet(fileName):
-	fr = open('/Users/rick/Documents/july_edu/machinelearninginaction/Ch10/' + fileName, 'r')
+	fr = open('/Users/rick/Documents/july_edu/machinelearninginaction/Ch10/' + fileName, 'ocr')
 	dataMat = []
 	for line in fr.readlines():
 		curLine = line.strip().split('\t')

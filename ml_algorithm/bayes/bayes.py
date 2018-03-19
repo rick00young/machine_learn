@@ -109,7 +109,7 @@ def bagOfWords2VecMN(vocabList, inputSet):
 
 def textParse(bigString):
 	import re
-	listOfTokens = re.split(r'\W*', bigString)
+	listOfTokens = re.split(ocr'\W*', bigString)
 	return [tok.lower() for tok in listOfTokens if len(tok) > 2]
 
 def spamTest():

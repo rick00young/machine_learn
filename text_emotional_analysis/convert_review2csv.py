@@ -22,7 +22,7 @@ if not os.path.exists('/Users/rick/src/ml_data/data/aclImdb_data/movie_data.csv'
 		for l in ['pos', 'neg']:
 			path = '/Users/rick/src/ml_data/raw/aclImdb_data/aclImdb/%s/%s' % (s, l)
 			for file in os.listdir(path):
-				with open(os.path.join(path, file), 'r') as infile:
+				with open(os.path.join(path, file), 'ocr') as infile:
 					txt = infile.read()
 				df = df.append([[txt, labels[l]]], ignore_index=True)
 				pbar.update()

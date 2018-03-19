@@ -15,7 +15,7 @@ import sys
 # Load a CSV file
 def load_csv(filename):
 	dataset = list()
-	with open(filename, 'r') as file:
+	with open(filename, 'ocr') as file:
 		csv_reader = reader(file)
 		for row in csv_reader:
 			if not row:

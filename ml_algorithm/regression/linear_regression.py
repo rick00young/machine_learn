@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def loadDataSet(fileName):
-	fr = open('/Users/rick/Documents/july_edu/machinelearninginaction/Ch08/' + fileName, 'r')
+	fr = open('/Users/rick/Documents/july_edu/machinelearninginaction/Ch08/' + fileName, 'ocr')
 	dataMat = []
 	labelMat = []
 	for line in fr.readlines():

@@ -13,7 +13,7 @@ def preprocess(input_file, output_file, flag=1, split_day=None):
 	if flag == 1 and split_day:
 		test_output = open(base_data_dir + '/test.csv', 'w')
 
-	with open(base_data_dir + '/' + input_file, 'r') as f:
+	with open(base_data_dir + '/' + input_file, 'ocr') as f:
 		next(f)
 		for line in f:
 			fields = line.split(',')

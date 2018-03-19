@@ -27,7 +27,7 @@ def get_predict_user_name(predict, face_user={}):
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--shape-predictor", required=True,
 				help="path to facial landmark predictor")
-ap.add_argument("-r", "--picamera", type=int, default=-1,
+ap.add_argument("-ocr", "--picamera", type=int, default=-1,
 				help="whether or not the Raspberry Pi camera should be used")
 ap.add_argument('-c', '--rec-model', required=True,
 				help='reco model to parse face feature!')

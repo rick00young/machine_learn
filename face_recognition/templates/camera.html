@@ -1,0 +1,468 @@
+<!--header-start-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>AI 人工智能 TensorFlow</title>
+
+    <!-- Bootstrap -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="shortcut icon" href="https://www.tensorflow.org/_static/ead69496c0/images/tensorflow/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.tensorflow.org/images/apple-touch-icon-180x180.png">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- link rel="stylesheet" href="//www.bootcss.com/p/bootstrap-datetimepicker/bootstrap-datetimepicker/css/datetimepicker.css" -->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+</head>
+<body>
+
+<!--header-end-->
+
+<style>
+
+    h1, h2, h3, h4, h5, h6 {
+        /*color: #000;*/
+        letter-spacing: 2px;
+        margin: 24px 0 16px;
+    }
+
+    body {
+        color: #606873;
+    }
+
+    .header_nav {
+        background-color: rgba(0, 0, 0, .6)
+    }
+
+    nav.navbar {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .nav > li > a {
+        text-decoration: none;
+        color: white;
+        border-bottom: 2px solid rgba(0, 0, 0, 0);
+    }
+
+    .navbar-brand {
+        color: white;
+    }
+
+    .navbar-brand:hover {
+        color: #5bc0de;
+        border-bottom: 2px solid #5bc0de;
+    }
+
+    .nav > li > a:hover, .nav > li > a:focus {
+        text-decoration: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: #5bc0de;
+        border-bottom: 2px solid #5bc0de;
+    }
+
+    .banner > H1 {
+        font-size: 100px;
+        line-height: 70px;
+    }
+
+    .banner > H2 {
+        font-size: 38px;
+        line-height: 48px;
+    }
+
+    .banner > H5 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .padding-xs {
+        padding: 32px 16px;
+    }
+
+    .title-bordered img {
+        padding: 0 90px;
+    }
+
+    .title-bordered img, img {
+        max-width: 100%;
+    }
+
+    .title-bordered H4 {
+        font-size: 22px;
+        margin: 24px 0 16px;
+        letter-spacing: 2px;
+    }
+
+    .title-bordered p {
+        line-height: 25px;
+    }
+
+    section {
+        position: relative;
+        padding: 96px 32px;
+        z-index: 0;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border-bottom: 1px solid #eceeef;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 72px
+    }
+
+    .section-header span {
+        color: #96a2b2;
+        font-family: Montserrat, sans-serif;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase
+    }
+
+    .section-header h2:after {
+        position: absolute;
+        left: 50%;
+        margin-left: -24px;
+        bottom: -30px;
+        width: 48px;
+        height: 2px;
+        background-color: #9e7dd3;
+        content: ""
+    }
+
+    .section-header span ~ h2 {
+        margin-top: 24px
+    }
+
+    .section-header p {
+        font-size: 18px
+    }
+
+    .section-header.text-left {
+        text-align: left
+    }
+
+    .section-header.text-left h2:after {
+        left: 0;
+        margin-left: 0
+    }
+
+    .section-header.text-right {
+        text-align: right
+    }
+
+    .list-view-item h5 {
+        margin-bottom: 8px;
+        margin-top: 16px;
+        font-weight: 500;
+        color: #000;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .list-view-item p {
+        line-height: 25px;
+        margin: 20px 0;
+    }
+
+    .section-sm {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .counter, .ribbon, figcaption {
+        text-align: center;
+    }
+
+    .counter.color-alt h6, .counter.color-alt i, .counter.color-alt p {
+        color: #fff;
+    }
+
+    .counter p {
+        font-size: 32px;
+        margin: 32px 0;
+        color: #373a3c;
+        font-family: Montserrat, sans-serif;
+    }
+
+    .counter h6 {
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .carousel-indicators li {
+        background-color: #9e7dd3;
+        border: 1px solid #9e7dd3;
+    }
+
+    .person_des img {
+        border-radius: 100%;
+        max-width: 128px;
+        height: auto;
+        float: right;
+        margin-right: 24px;
+    }
+
+    .person_des H3, .person_des p {
+        margin-top: 0;
+        font-family: Raleway, sans-serif;
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 300;
+    }
+
+    .site-footer {
+        background-color: #161b1f;
+        padding: 45px 0;
+    }
+
+    .footer-links {
+        padding-left: 0;
+    }
+
+    .footer-links li, .footer-socials a, .footer-socials li, .radio label, .radio label:after, .tabs .nav-tabs > li {
+        display: inline-block;
+    }
+
+    .footer-links a {
+        color: #eceeef;
+        margin-right: 16px;
+        line-height: 34px;
+    }
+</style>
+
+<header style="background-image: url(//fe.agrovips.com/fe_image/banner1.jpg);">
+    <div class="header_nav">
+        <div class="container">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Brand</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active hide"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                            <li class="hide"><a href="#">Link</a></li>
+                            <li class="dropdown hide">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-left hide">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">产品介绍</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li class="dropdown hide">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
+        </div>
+    </div>
+</header>
+
+<div class="main">
+    <section id="sec-tools" class="no-border-bottom bg-gray-light padding-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 title-bordered">
+                    <video autoplay id="sourcevid" style="width: 360px; height: 270px"></video>
+                    <h4 class="text-center m-t"></h4>
+
+                    <p class="text-gray text-center no-margin hide">
+                        我们将近四万首唐诗灌入RNN神经网络，使其习得`创作`唐诗的能力，不仅能够随机生成无主题诗歌，例如：`帝以诚求备，堪留百勇杯。教官日与失，共恨五毛宣。鸡唇春疏叶，空衣滴舞衣。丑夫归晚里，此地几何人`;也能够按需求生成藏头诗，例如：`如花似月`，`如尔残回号，花枝误晚声。似君星度上，月满二秋寒。`。</p>
+                </div>
+                <div class="col-sm-4 title-bordered">
+                    <img id="receiver" width="300" height="150" />
+                    <h4 class="text-center m-t hide">图片风格迁移</h4>
+                    <canvas id="output" style="display:none"></canvas>
+                    <p class="text-gray text-center no-margin">
+                        提示：最好用火狐测试，谷歌浏览器升级了安全策略，谷歌浏览器只能在https下才能利用html5打开摄像头。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <ul class="footer-links">
+                    <li><a href="#" target="">About</a></li>
+                    <li><a href="#" target="">Version</a></li>
+                    <li><a href="#" target="">RunPHP</a></li>
+                    <li><a href="#">Coding Music</a></li>
+                    <li><a href="#" target="">PHPHub</a></li>
+                    <li><a href="#">纠错</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="footer-socials">
+                    <li><a class="facebook" href="#"><i class="fa fa-weibo"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-weixin"></i></a></li>
+                    <li><a class="dribbble" href="#"><i class="fa fa-github"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyrights © 2017 All Rights Reserved by <a href="###">agrovips.com</a>
+                </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <p class="back-to-top hide"><a id="scroll-up" href="#">返回顶部</a></p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<div id="topcontrol" class="hide" style="margin-left: auto; margin-right: auto; width: 1000px; display: block;"><a
+        href="javascript:void(0);" class="top_stick" style="position: fixed; bottom: 20px; right: 30px; z-index: 9999;">
+    &nbsp;</a>
+</div>
+
+
+<!--footer-start-->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- script src="//www.bootcss.com/p/bootstrap-datetimepicker/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script -->
+
+</body>
+</html>
+<!--footer-end-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+    // var socket = new WebSocket("ws://"+document.domain+":5000/connect");
+    var socket = io.connect('http://127.0.0.1:5000/test');
+    var back = document.getElementById('output');
+    var backcontext = back.getContext('2d');
+    var video = document.getElementsByTagName('video')[0];
+
+    var success = function (stream) {
+        video.src = window.URL.createObjectURL(stream);
+    }
+
+    // socket.onopen = function(){
+    //     console.log('connected....');
+    //     draw();
+    // }
+    socket.on('connect', function () {
+        // chat.emit('hi!');
+        console.log('connected');
+        draw();
+    });
+
+{#    var v_width = video.width();#}
+{#    var v_heigth = video.height();#}
+{#    console.log(v_heigth);#}
+
+    var image = document.getElementById('receiver');
+    socket.on('predict', function (data) {
+        image.src = data.data;
+        console.log(data)
+    });
+    // console.log(1111);
+    // console.log(video);
+    var draw = function () {
+        try {
+            backcontext.drawImage(video, 0, 0, back.width, back.height);
+            // console.log(video)
+        } catch (e) {
+            if (e.name == "NS_ERROR_NOT_AVAILABLE") {
+                return setTimeout(draw, 100);
+            } else {
+                throw e;
+            }
+        }
+        if (video.src) {
+            // socket.send(back.toDataURL("image/jpeg", 0.5));
+            socket.emit('camera', {data: back.toDataURL("image/jpeg", 0.5)});
+            // console.log(back.toDataURL("image/jpeg", 0.5))
+        }
+        setTimeout(draw, 100);
+    };
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    navigator.getUserMedia({video: true, audio: false}, success, console.log);
+
+{#    var video = $("#sourcevid");#}
+
+</script>

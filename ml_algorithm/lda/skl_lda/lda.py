@@ -5,7 +5,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 
 stop_word_file = '/Users/rick/work_space/www/machine_learn/ml_algorithm/nlp/data/stop_words.txt'
 stop_word_list = []
-with open(stop_word_file, 'r') as f:
+with open(stop_word_file, 'ocr') as f:
     stop_word_content = f.read()
     stop_word_list = stop_word_content.splitlines()
 f.close()

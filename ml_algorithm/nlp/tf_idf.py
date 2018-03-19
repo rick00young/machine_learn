@@ -3,7 +3,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 stop_word_file = 'data/stop_words.txt'
 stop_word_list = []
-with open(stop_word_file, 'r') as f:
+with open(stop_word_file, 'ocr') as f:
 	stop_word_content = f.read()
 	stop_word_list = stop_word_content.splitlines()
 f.close()

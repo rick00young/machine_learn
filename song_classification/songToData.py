@@ -35,7 +35,7 @@ def createSpectrogram(filename,newFilename, genre):
 
 	#Create spectrogram
 	filename.replace(".mp3","")
-	command = "sox 'tmp/{}.mp3' -n spectrogram -Y 200 -X {} -m -r -o '{}.png'".format(newFilename,pixelPerSecond,spectrogramsPath+newFilename)
+	command = "sox 'tmp/{}.mp3' -n spectrogram -Y 200 -X {} -m -ocr -o '{}.png'".format(newFilename,pixelPerSecond,spectrogramsPath+newFilename)
 	p = Popen(command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True, cwd=currentPath)
 	# print(command)
 	output, errors = p.communicate()

@@ -47,7 +47,7 @@ X_train=np.reshape(X_train,newshape=(-1,TIME_STEPS,1))
 X_test=np.reshape(X_test,newshape=(-1,TIME_STEPS,1))
 
 #draw y_test
-plt.plot(range(1000),y_test[:1000,0],"r*")
+plt.plot(range(1000),y_test[:1000,0],"ocr*")
 #print(X_train.shape)
 #print(X_test.shape)
 
